@@ -1,0 +1,75 @@
+#+TITLE: iTerm2 Config
+#+AUTHOR: Pedro Delfino
+#+DESCRIPTION: Because even my terminal deserves version control therapy.
+
+* The Problem
+
+I mass-selected text with my mouse like a civilized person, pressed
+=Alt+W= expecting it to copy, and nothing happened. Turns out iTerm2
+and zsh have never met. They live in the same house but use different
+refrigerators.
+
+* The Solution
+
+Enable "Copy to pasteboard on selection" so the mouse does the
+copying for me. Now selecting IS copying. One fewer keystroke between
+me and productivity. My therapist would be proud.
+
+* What's Here
+
+*Default.json* - My iTerm2 profile, exported as JSON. Contains my
+terminal personality: colors, fonts, and the one setting that ended
+a 30-minute debugging session with Claude.
+
+* The One Setting That Matters
+
+#+BEGIN_SRC bash
+defaults write com.googlecode.iterm2 CopySelection -bool true
+#+END_SRC
+
+That's it. That's the repo. I version-controlled a single boolean.
+
+* Installation
+
+#+BEGIN_SRC bash
+git clone git@github.com:pdelfino/iTerm2-config.git ~/projects/iTerm2-config
+#+END_SRC
+
+To import: iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles...
+
+To re-export, run the script in the "Export" section below. Or just
+change things and pretend you never had a backup.
+
+* Export
+
+#+BEGIN_SRC python
+python3 -c "
+import plistlib, json, base64
+
+with open('$HOME/Library/Preferences/com.googlecode.iterm2.plist', 'rb') as f:
+    plist = plistlib.load(f)
+
+def make_serializable(obj):
+    if isinstance(obj, bytes):
+        return base64.b64encode(obj).decode('ascii')
+    elif isinstance(obj, dict):
+        return {k: make_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [make_serializable(v) for v in obj]
+    return obj
+
+for p in plist.get('New Bookmarks', []):
+    name = p.get('Name', 'profile')
+    with open(f'{name}.json', 'w') as f:
+        json.dump(make_serializable(p), f, indent=2)
+"
+#+END_SRC
+
+* The Dotfiles Cinematic Universe
+
+| Repo | What it controls | Vibe |
+|------+------------------+------|
+| [[https://github.com/pdelfino/zshrc][zshrc]] | Shell config | Emacs bindings on everything |
+| [[https://github.com/pdelfino/claude-config][claude-config]] | AI leash | Trust but =deny: git push= |
+| [[https://github.com/pdelfino/my-karabiner-elements-config][my-karabiner-elements-config]] | Keyboard remaps | Right Option opens apps |
+| *this repo* | Terminal profile | One boolean to rule them all |
