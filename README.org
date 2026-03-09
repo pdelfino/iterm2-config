@@ -32,7 +32,7 @@ That's it. That's the repo. I version-controlled a single boolean.
 * Installation
 
 #+BEGIN_SRC bash
-git clone git@github.com:pdelfino/iTerm2-config.git ~/projects/iTerm2-config
+git clone git@github.com:pdelfino/iterm2-config.git ~/projects/iterm2-config
 #+END_SRC
 
 To import: iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles...
@@ -71,5 +71,5 @@ for p in plist.get('New Bookmarks', []):
 |------+------------------+------|
 | [[https://github.com/pdelfino/zshrc][zshrc]] | Shell config | Emacs bindings on everything |
 | [[https://github.com/pdelfino/claude-config][claude-config]] | AI leash | Trust but =deny: git push= |
-| [[https://github.com/pdelfino/my-karabiner-elements-config][my-karabiner-elements-config]] | Keyboard remaps | Right Option opens apps |
+| [[https://github.com/pdelfino/karabiner-config][karabiner-config]] | Keyboard remaps | Right Option opens apps |
 | *this repo* | Terminal profile | One boolean to rule them all |
