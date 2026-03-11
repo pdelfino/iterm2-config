@@ -69,7 +69,10 @@ for p in plist.get('New Bookmarks', []):
 
 | Repo | What it controls | Vibe |
 |------+------------------+------|
+| [[https://github.com/pdelfino/emacs-config][emacs-config]] | Emacs setup | Ivy, Paredit, Claude Code integration |
+| [[https://github.com/pdelfino/karabiner-config][karabiner-config]] | Keyboard remaps | Right Option opens apps |
+| [[https://github.com/pdelfino/homerow-config][homerow-config]] | Clickless navigation | Label everything, click nothing |
 | [[https://github.com/pdelfino/zshrc][zshrc]] | Shell config | Emacs bindings on everything |
 | [[https://github.com/pdelfino/claude-config][claude-config]] | AI leash | Trust but =deny: git push= |
-| [[https://github.com/pdelfino/karabiner-config][karabiner-config]] | Keyboard remaps | Right Option opens apps |
+| [[https://github.com/pdelfino/macos-setup][macos-setup]] | Bootstrap | The glue that ties it all together |
 | *this repo* | Terminal profile | One boolean to rule them all |
