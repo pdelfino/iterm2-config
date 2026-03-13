@@ -1,6 +1,6 @@
 # iTerm2-config
 
-![Woman at a Window](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Caspar_David_Friedrich_018.jpg/700px-Caspar_David_Friedrich_018.jpg)
+![Woman at a Window](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Caspar_David_Friedrich_018.jpg/960px-Caspar_David_Friedrich_018.jpg)
 
 *"Woman at a Window" (1822) by Caspar David Friedrich — [Wikipedia](https://en.wikipedia.org/wiki/Woman_at_a_Window_(Friedrich))*
 
