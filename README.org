@@ -1,25 +1,18 @@
-#+TITLE: iTerm2 Config
+#+TITLE: iTerm2-config
 #+AUTHOR: Pedro Delfino
-#+DESCRIPTION: Because even my terminal deserves version control therapy.
+#+DESCRIPTION: Even my terminal deserves version control therapy.
 
-* The Problem
+[[file:painting.jpg]]
 
-I mass-selected text with my mouse like a civilized person, pressed
-=Alt+W= expecting it to copy, and nothing happened. Turns out iTerm2
-and zsh have never met. They live in the same house but use different
-refrigerators.
+/"Woman at a Window" (1822) by Caspar David Friedrich, [[https://en.wikipedia.org/wiki/Woman_at_a_Window_(Friedrich)][Wikipedia]]/
 
-* The Solution
+*Even my terminal deserves version control therapy.*
 
-Enable "Copy to pasteboard on selection" so the mouse does the
-copying for me. Now selecting IS copying. One fewer keystroke between
-me and productivity. My therapist would be proud.
+* About
 
-* What's Here
+A version-controlled iTerm2 profile, born from a 30-minute debugging session to figure out why =Alt+W= (Emacs copy) was not working. The fix: a single boolean. This repo exists so that setting never gets lost again.
 
-*Default.json* - My iTerm2 profile, exported as JSON. Contains my
-terminal personality: colors, fonts, and the one setting that ended
-a 30-minute debugging session with Claude.
+The core philosophy is simple: selecting text should copy it. Combined with the Emacs keybindings in the [[https://github.com/pdelfino/zshrc][zshrc]] config, this creates a fully keyboard-driven terminal where kill/yank operations and mouse selection both feed into the same system clipboard.
 
 * The One Setting That Matters
 
@@ -27,7 +20,11 @@ a 30-minute debugging session with Claude.
 defaults write com.googlecode.iterm2 CopySelection -bool true
 #+END_SRC
 
-That's it. That's the repo. I version-controlled a single boolean.
+"Copy to pasteboard on selection", so selecting IS copying. That is the setting this repo exists to preserve.
+
+* What's Here
+
+- *Default.json*: full iTerm2 profile exported as JSON, including colors, fonts, and key mappings
 
 * Installation
 
@@ -35,12 +32,11 @@ That's it. That's the repo. I version-controlled a single boolean.
 git clone git@github.com:pdelfino/iterm2-config.git ~/projects/iterm2-config
 #+END_SRC
 
-To import: iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles...
+To import: iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles, then select =Default.json=.
 
-To re-export, run the script in the "Export" section below. Or just
-change things and pretend you never had a backup.
+* Exporting an Updated Profile
 
-* Export
+If you change your iTerm2 settings and want to update the repo:
 
 #+BEGIN_SRC python
 python3 -c "
@@ -65,14 +61,17 @@ for p in plist.get('New Bookmarks', []):
 "
 #+END_SRC
 
-* The Dotfiles Cinematic Universe
+* Related
 
-| Repo | What it controls | Vibe |
-|------+------------------+------|
-| [[https://github.com/pdelfino/emacs-config][emacs-config]] | Emacs setup | Ivy, Paredit, Claude Code integration |
-| [[https://github.com/pdelfino/karabiner-config][karabiner-config]] | Keyboard remaps | Right Option opens apps |
-| [[https://github.com/pdelfino/homerow-config][homerow-config]] | Clickless navigation | Label everything, click nothing |
-| [[https://github.com/pdelfino/zshrc][zshrc]] | Shell config | Emacs bindings on everything |
-| [[https://github.com/pdelfino/claude-config][claude-config]] | AI leash | Trust but =deny: git push= |
-| [[https://github.com/pdelfino/macos-setup][macos-setup]] | Bootstrap | The glue that ties it all together |
-| *this repo* | Terminal profile | One boolean to rule them all |
+| Repo | What it controls |
+|------+------------------|
+| [[https://github.com/pdelfino/emacs-config][emacs-config]] | Emacs setup with Ivy, Paredit, Claude Code integration |
+| [[https://github.com/pdelfino/karabiner-config][karabiner-config]] | Emacs keybindings system-wide on macOS |
+| [[https://github.com/pdelfino/homerow-config][homerow-config]] | Clickless navigation: label everything, click nothing |
+| [[https://github.com/pdelfino/zshrc][zshrc]] | ZSH config with Emacs bindings and clipboard sync |
+| [[https://github.com/pdelfino/claude-config][claude-config]] | Claude Code configuration |
+| [[https://github.com/pdelfino/macos-setup][macos-setup]] | The bootstrap that ties it all together |
+
+* License
+
+Personal configuration, use freely.
